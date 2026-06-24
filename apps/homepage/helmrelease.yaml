@@ -1,0 +1,53 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: homepage
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://jameswynn.github.io/helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: homepage
+  namespace: homepage
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: homepage
+      version: ">=1.0.0"
+      sourceRef:
+        kind: HelmRepository
+        name: homepage
+        namespace: flux-system
+      interval: 24h
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    image:
+      repository: ghcr.io/gethomepage/homepage
+      tag: latest
+    config:
+      bookmarks:
+        - Homelab:
+            - GitHub Repo:
+                - href: https://github.com/Lucasade22/homelab
+                  icon: github.png
+      services:
+        - Infrastructure:
+            - ingress-nginx:
+                description: Ingress controller
+                icon: nginx.png
+            - Sealed Secrets:
+                description: Secret encryption
+                icon: kubernetes.png
+      settings:
+        title: Yggdrasil Homelab
+        theme: dark
+        color: slate
