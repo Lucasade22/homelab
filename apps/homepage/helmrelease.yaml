@@ -32,6 +32,9 @@ spec:
   values:
     env:
       HOMEPAGE_ALLOWED_HOSTS: "homepage.bifrost22.dev"
+    envFrom:
+      - secretRef:
+          name: homepage-secrets
     image:
       repository: ghcr.io/gethomepage/homepage
       tag: latest
@@ -49,6 +52,16 @@ spec:
             - Sealed Secrets:
                 description: Secret encryption
                 icon: kubernetes.png
+        - Monitoring:
+            - Grafana:
+                href: https://grafana.bifrost22.dev
+                description: Cluster dashboards
+                icon: grafana.png
+                widget:
+                  type: grafana
+                  url: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local
+                  username: admin
+                  password: "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}"
       settings:
         title: Yggdrasil Homelab
         theme: dark
