@@ -31,7 +31,7 @@ spec:
       retries: 3
   values:
     env:
-      HOMEPAGE_ALLOWED_HOSTS: "192.168.0.120,100.75.30.28"
+      HOMEPAGE_ALLOWED_HOSTS: "homepage.bifrost22.dev"
     image:
       repository: ghcr.io/gethomepage/homepage
       tag: latest

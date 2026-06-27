@@ -5,10 +5,21 @@ metadata:
   namespace: homepage
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx
-  defaultBackend:
-    service:
-      name: homepage
-      port:
-        number: 3000
+  tls:
+    - hosts:
+        - homepage.bifrost22.dev
+      secretName: homepage-tls
+  rules:
+    - host: homepage.bifrost22.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: homepage
+                port:
+                  number: 3000
