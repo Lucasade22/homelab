@@ -4,3 +4,4 @@ resources:
   - namespaces.yaml
   - ingress-nginx.yaml
   - sealed-secrets.yaml
+  - cert-manager.yaml
