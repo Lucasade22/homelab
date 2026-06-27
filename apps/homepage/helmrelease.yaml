@@ -62,6 +62,11 @@ spec:
                   url: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local
                   username: admin
                   password: "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}"
+        - Home:
+            - Home Assistant:
+                href: https://homeassistant.bifrost22.dev
+                description: Smart home control
+                icon: home-assistant.png
       settings:
         title: Yggdrasil Homelab
         theme: dark
