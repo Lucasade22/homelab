@@ -39,7 +39,7 @@ spec:
         passwordKey: admin-password
       ingress:
         enabled: true
-        ingressClassName: nginx
+        ingressClassName: nginx-external
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-prod
         hosts:

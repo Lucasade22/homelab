@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
   - namespaces.yaml
   - ingress-nginx.yaml
+  - ingress-nginx-external.yaml
   - sealed-secrets.yaml
   - cert-manager.yaml
