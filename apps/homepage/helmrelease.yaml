@@ -30,6 +30,7 @@ spec:
     remediation:
       retries: 3
   values:
+    enableRbac: true
     env:
       HOMEPAGE_ALLOWED_HOSTS: "homepage.bifrost22.dev"
     envFrom:
@@ -37,7 +38,6 @@ spec:
           name: homepage-grafana-token
       - secretRef:
           name: homepage-homeassistant-token
-    enableRbac: true
     image:
       repository: ghcr.io/gethomepage/homepage
       tag: latest
@@ -52,21 +52,17 @@ spec:
       widgets:
         - kubernetes:
             cluster:
-              show: true
               cpu: true
-              memory: true
-              showLabel: true
               label: yggdrasil
-            nodes:
+              memory: true
               show: true
+              showLabel: true
+            nodes:
               cpu: true
               memory: true
+              disk: true
+              show: true
               showLabel: true
-        - resources:
-            cpu: true
-            memory: true
-            disk: /
-            label: asgard
         - datetime:
             text_size: xl
             format:
