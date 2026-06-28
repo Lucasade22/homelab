@@ -47,6 +47,18 @@ spec:
                 - href: https://github.com/Lucasade22/homelab
                   icon: github.png
       widgets:
+        - kubernetes:
+            cluster:
+              show: true
+              cpu: true
+              memory: true
+              showLabel: true
+              label: yggdrasil
+            nodes:
+              show: true
+              cpu: true
+              memory: true
+              showLabel: true
         - resources:
             cpu: true
             memory: true
@@ -70,6 +82,11 @@ spec:
             - Sealed Secrets:
                 description: Secret encryption
                 icon: kubernetes.png
+                siteMonitor: http://sealed-secrets-controller.sealed-secrets.svc.cluster.local:8080/healthz
+            - cert-manager:
+                description: Certificate management
+                icon: cert-manager.png
+                siteMonitor: http://cert-manager.cert-manager.svc.cluster.local:9403/livez
         - Monitoring:
             - Grafana:
                 href: https://grafana.bifrost22.dev
