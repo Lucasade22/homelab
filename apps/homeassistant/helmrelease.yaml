@@ -42,3 +42,6 @@ spec:
     env:
       - name: TZ
         value: Europe/London
+    configuration:
+      configMap:
+        name: homeassistant-config
