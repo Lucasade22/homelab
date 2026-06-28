@@ -86,7 +86,7 @@ spec:
             - cert-manager:
                 description: Certificate management
                 icon: cert-manager.png
-                siteMonitor: http://cert-manager.cert-manager.svc.cluster.local:9403/livez
+                siteMonitor: http://cert-manager.cert-manager.svc.cluster.local:9402/metrics
         - Monitoring:
             - Grafana:
                 href: https://grafana.bifrost22.dev
