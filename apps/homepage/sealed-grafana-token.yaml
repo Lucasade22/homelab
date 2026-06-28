@@ -1,0 +1,13 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: homepage-grafana-token
+  namespace: homepage
+spec:
+  encryptedData:
+    HOMEPAGE_VAR_GRAFANA_PASSWORD: AgAcBI04VVdqMxAG1TrypXmmBzcrB1OM0XOTkTo404F6i6aRcr07qsly505m/u/psWLDZav5ExvE1NmnTO57x3P7UBFV4yvRwQ5Rdh/AhrRWxdiKTAgo1s0NVKVgFi9xzW0nBBRFD2XnoENI5DMZ4C0qOimfBpUsb9/K3eOAPTfjRVWdxLlY5tLF2zjrmicCXCoFhTn5BfT4KjYkMmSnPxk5H/lQcbSdRdHpVDGr4fmhO9eLi/Vwggm0wSBl09ws80ubpzu1HGRsQh5fleEnHSE6upaPggLNDRWY2Ro36rofobPkVJ1iskSKn3q+472denlvArPyMSbVtfmL0kQnk6F4nDEnmNRoTj//7eO2ohemVlUaSApVzGfd0I2VeqBo6KEuQab6QTLE/Arxka40o55VZyW95eAyFF/2CJH/X0WB+NzB/lD6eMY2RI3OoSJgrY2T2WotfGvsSEekmboWoUgaWLDOlsgmWekr3QexRiKf7WIh7mWkiM3BCoWYErskiXxosy9SXMiPxR8bFDmf4NSt0NCloM/zKjeHLjAf13WZ7Ut1L2sOqpwDLSofrZKw4tDDjkedbqtViKEzhxyDpYkZHw8pQZLSwlu94CLKfHhYBPrZOFvsoH4TJzat8OdPj0yGeK7aM8hhrIs9B7ApViSlcT2M/uhAiJ0UrrhbhwgglX1Fts7bLLrm8CGlYmo4QO6+ftNGodhO4qD5Gmz+zTpF/x96iw==
+  template:
+    metadata:
+      name: homepage-grafana-token
+      namespace: homepage

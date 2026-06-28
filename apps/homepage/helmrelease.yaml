@@ -34,7 +34,9 @@ spec:
       HOMEPAGE_ALLOWED_HOSTS: "homepage.bifrost22.dev"
     envFrom:
       - secretRef:
-          name: homepage-secrets
+          name: homepage-grafana-token
+      - secretRef:
+          name: homepage-homeassistant-token
     image:
       repository: ghcr.io/gethomepage/homepage
       tag: latest
@@ -44,11 +46,27 @@ spec:
             - GitHub Repo:
                 - href: https://github.com/Lucasade22/homelab
                   icon: github.png
+      widgets:
+        - resources:
+            cpu: true
+            memory: true
+            disk: /
+            label: asgard
+        - datetime:
+            text_size: xl
+            format:
+              locale: en-GB
+              dateStyle: short
+              timeStyle: short
+        - search:
+            provider: duckduckgo
+            target: _blank
       services:
         - Infrastructure:
             - ingress-nginx:
                 description: Ingress controller
                 icon: nginx.png
+                siteMonitor: http://ingress-nginx-internal-controller.ingress-nginx.svc.cluster.local
             - Sealed Secrets:
                 description: Secret encryption
                 icon: kubernetes.png
@@ -67,7 +85,16 @@ spec:
                 href: https://homeassistant.bifrost22.dev
                 description: Smart home control
                 icon: home-assistant.png
+                widget:
+                  type: homeassistant
+                  url: http://homeassistant-home-assistant.homeassistant.svc.cluster.local:8080
+                  key: "{{HOMEPAGE_VAR_HOMEASSISTANT_TOKEN}}"
+                  fields:
+                    - people_home
+                    - lights_on
+                    - switches_on
       settings:
         title: Yggdrasil Homelab
         theme: dark
         color: slate
+        target: _blank

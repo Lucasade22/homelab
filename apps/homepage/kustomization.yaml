@@ -4,4 +4,5 @@ resources:
   - namespace.yaml
   - helmrelease.yaml
   - ingress.yaml
-  - sealed-homepage-secrets.yaml
+  - sealed-grafana-token.yaml
+  - sealed-homeassistant-token.yaml
