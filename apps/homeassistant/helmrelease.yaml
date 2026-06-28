@@ -42,6 +42,11 @@ spec:
     env:
       - name: TZ
         value: Europe/London
+    ingress:
+      enabled: false
+      external: true
     configuration:
-      configMap:
-        name: homeassistant-config
+      enabled: true
+      forceInit: true
+      trusted_proxies:
+        - 10.42.0.0/16
