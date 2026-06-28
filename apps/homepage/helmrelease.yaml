@@ -66,7 +66,7 @@ spec:
             - ingress-nginx:
                 description: Ingress controller
                 icon: nginx.png
-                siteMonitor: http://ingress-nginx-internal-controller.ingress-nginx.svc.cluster.local
+                siteMonitor: http://ingress-nginx-internal-controller.ingress-nginx.svc.cluster.local/healthz
             - Sealed Secrets:
                 description: Secret encryption
                 icon: kubernetes.png
