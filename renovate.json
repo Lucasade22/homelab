@@ -15,16 +15,16 @@
   ],
   "flux": {
     "enabled": true,
-    "fileMatch": [
-      "infrastructure/.+\\.yaml$",
-      "apps/.+\\.yaml$",
-      "clusters/.+\\.yaml$"
+    "managerFilePatterns": [
+      "/infrastructure/.+\\.yaml$/",
+      "/apps/.+\\.yaml$/",
+      "/clusters/.+\\.yaml$/"
     ]
   },
   "helm-values": {
-    "fileMatch": [
-      "infrastructure/.+\\.yaml$",
-      "apps/.+\\.yaml$"
+    "managerFilePatterns": [
+      "/infrastructure/.+\\.yaml$/",
+      "/apps/.+\\.yaml$/"
     ]
   },
   "packageRules": [
