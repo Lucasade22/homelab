@@ -60,9 +60,12 @@ spec:
             nodes:
               cpu: true
               memory: true
-              disk: true
               show: true
               showLabel: true
+        - resources:
+            disk: /
+            label: asgard storage
+            expanded: true
         - datetime:
             text_size: xl
             format:
