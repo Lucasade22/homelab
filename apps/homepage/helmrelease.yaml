@@ -37,6 +37,8 @@ spec:
           name: homepage-grafana-token
       - secretRef:
           name: homepage-homeassistant-token
+    kubernetes:
+      mode: default
     image:
       repository: ghcr.io/gethomepage/homepage
       tag: latest
