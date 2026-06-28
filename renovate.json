@@ -6,11 +6,26 @@
   "timezone": "Europe/London",
   "schedule": ["before 9am on Monday"],
   "labels": ["renovate", "dependencies"],
+  "enabledManagers": [
+    "flux",
+    "helm-values",
+    "helmv3",
+    "docker-compose",
+    "dockerfile"
+  ],
   "flux": {
-    "enabled": true
+    "enabled": true,
+    "fileMatch": [
+      "infrastructure/.+\\.yaml$",
+      "apps/.+\\.yaml$",
+      "clusters/.+\\.yaml$"
+    ]
   },
   "helm-values": {
-    "enabled": true
+    "fileMatch": [
+      "infrastructure/.+\\.yaml$",
+      "apps/.+\\.yaml$"
+    ]
   },
   "packageRules": [
     {
