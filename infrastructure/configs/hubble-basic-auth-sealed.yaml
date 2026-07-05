@@ -1,0 +1,13 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: hubble-basic-auth
+  namespace: kube-system
+spec:
+  encryptedData:
+    auth: AgA/pM+jZ17nMZB0/nwIX1W3SuWt8gIggnPy4RMSOFLoQWVFolJ0oM6/oTbAfiWD8py6vztlrsTOlRcZLUW0CN5qWU8F8AU9vPrTx0qxe5yIOvVbvMwP+uaYEPSwVUX6dW8gqBKFGJNPrpFuQGRQtdBGf0iKfbnuwngnA2QQQ6ufKR0bDvNlabGuEr4fs0IpUHSQztttD9eNaIBYOe5cj1BIDQQNgjrUSb8hLcDGySytNnKIsV2/rI5h/0Ymf0B59+asaQ8wwDVYZ9iJ2agBRBOYeeFrfzbUzRFhdfHwWznmIisPI68RMFWN3jl39YxybbJPlkgkwmRtUTPpuuQEyJD3b7rllKJLu2WokgQiX8fgF/B0gaJ+wdAY4og6rIJ/fZBJJQTiFLtxHEQ7ewrT4lg+lty2uRfl09tDjpF+sotd7212Dc9RI5mGfxnkeEV4MurueLiEF6M2GA1yEIOzuRSIzRJyoukNtpb/SOVo/Np8AwRoo35Pv6yN8pokbUQxR4qVdjRet+cne5bnxr6Jwqbqqv9ouNhlwA3ok2PnpMLCNtolNCEdL/a2w4rsDdbBcJ0uDJX5DgEUhwCcBhPbk5TLmsPc5UKVVTrKZtKZs33HrT3pvANhI3c+FsKW2TxO0e1Bg7bvuw7SN/2RbBQ4Vb/5hSD6iUD5G02/i1yCnSCituSqmUjzFk4kvltl7cNGk0xNCPjO0YFfxep+LkDHPzH15mLb3GLNVSZJoAJ0Fpq+h10pLufNYqWrLlhuQo0=
+  template:
+    metadata:
+      name: hubble-basic-auth
+      namespace: kube-system
