@@ -55,3 +55,10 @@ spec:
       hostRoot: /sys/fs/cgroup
     endpointRoutes:
       enabled: true
+    l2announcements:
+      enabled: true
+    externalIPs:
+      enabled: true
+    k8sClientRateLimit:
+      qps: 20
+      burst: 40
