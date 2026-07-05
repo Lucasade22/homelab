@@ -17,7 +17,6 @@ spec:
   interfaces:
     - ^eth[0-9]+
     - ^enp[0-9]+
-    - ^tailscale[0-9]+
   nodeSelector:
     matchLabels:
       kubernetes.io/hostname: asgard
