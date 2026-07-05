@@ -99,6 +99,10 @@ spec:
                   url: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local
                   username: admin
                   password: "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}"
+            - Hubble:
+                href: https://hubble.bifrost22.dev
+                description: Cilium network flow visibility
+                icon: cilium.png
         - Home:
             - Home Assistant:
                 href: https://homeassistant.bifrost22.dev
