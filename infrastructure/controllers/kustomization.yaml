@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - namespaces.yaml
   - cilium.yaml
-  - metallb.yaml
   - ingress-nginx.yaml
   - ingress-nginx-external.yaml
   - sealed-secrets.yaml

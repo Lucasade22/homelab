@@ -16,11 +16,6 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: metallb-system
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: kube-system
   labels:
     pod-security.kubernetes.io/privileged: "true"
