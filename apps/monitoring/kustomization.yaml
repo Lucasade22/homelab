@@ -4,3 +4,5 @@ resources:
   - namespace.yaml
   - sealed-grafana-secret.yaml
   - helmrelease.yaml
+  - sealed-minio-root-credentials.yaml
+  - minio-helmrelease.yaml

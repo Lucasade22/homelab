@@ -1,0 +1,51 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: minio
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://charts.min.io/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: minio
+  namespace: monitoring
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: minio
+      version: ">=5.4.0"
+      sourceRef:
+        kind: HelmRepository
+        name: minio
+        namespace: flux-system
+      interval: 24h
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    mode: standalone
+    replicas: 1
+    existingSecret: minio-root-credentials
+    persistence:
+      enabled: true
+      storageClass: local-path
+      accessMode: ReadWriteOnce
+      size: 50Gi
+    buckets:
+      - name: loki-chunks
+        policy: none
+        purge: false
+    resources:
+      requests:
+        memory: 512Mi
+        cpu: 250m
+      limits:
+        memory: 1Gi
+        cpu: 500m
