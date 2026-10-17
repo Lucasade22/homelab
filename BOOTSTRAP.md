@@ -312,6 +312,36 @@ curl -I https://homeassistant.bifrost22.dev
 
 ---
 
+## Version Pinning Policy
+
+Every HelmRelease pins its chart to an **exact version** (e.g. `version: "1.20.3"`),
+never a range such as `">=1.15.0"`. A range makes Flux install whatever is newest at
+reconcile time, so upgrades happen outside git with no review, and Renovate has
+nothing to bump. With exact pins, Renovate opens a PR for each new version and the
+upgrade only happens when that PR is merged.
+
+Pinned versions as of 2026-10-17 (matching what was running in the cluster):
+
+| Chart | Version |
+|---|---|
+| cilium | 1.20.3 |
+| cert-manager | v1.21.2 (note the `v` prefix) |
+| ingress-nginx (internal + external) | 4.15.1 |
+| sealed-secrets | 2.20.0 |
+| homepage | 2.1.0 |
+| home-assistant | 0.3.87 |
+| kube-prometheus-stack | 92.10.1 |
+| minio | 5.4.0 |
+
+Notes:
+- Container image tags are separate from chart versions. Homepage (`latest`) and
+  Home Assistant (`stable`) still float and are not yet pinned.
+- Phase 5 installs Cilium manually at 1.17.3. Flux then upgrades it to the pinned
+  version. When rebuilding, consider bootstrapping with the pinned version instead,
+  after checking the `helm install` flags are still valid for it.
+
+---
+
 ## Adding a Second Node (Future)
 
 When adding midgard or another node:
