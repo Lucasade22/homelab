@@ -107,6 +107,34 @@ sudo ufw deny from 192.168.0.0/24 to 100.75.30.28 port 443 proto tcp comment 'Bl
 sudo ufw allow from 192.168.0.0/24 to 192.168.0.120 port 8123 proto tcp comment 'Home Assistant from LAN devices'
 ```
 
+### Required: allow the k3s pod and service networks
+
+⚠️ Without these rules, UFW's default-deny blocks pods from reaching the
+Kubernetes API server (and other host ports such as kubelet 10250 and the
+Hubble peer port 4244). The LAN-only 6443 rule above does NOT cover pods,
+because pod traffic arrives from the pod network (10.42.0.0/16), not the LAN.
+
+```bash
+sudo ufw allow from 10.42.0.0/16 comment 'k3s pod network'
+sudo ufw allow from 10.43.0.0/16 comment 'k3s service network'
+```
+
+**Symptom if missing:** pods that talk to the API server (Flux controllers,
+cert-manager, sealed-secrets, metrics-server, local-path-provisioner, etc.)
+crash-loop with `dial tcp 10.43.0.1:443: i/o timeout`, and Hubble shows their
+SYNs to 192.168.0.120:6443 forwarded `to-stack` with no reply.
+
+**Diagnose:**
+```bash
+sudo journalctl -k --since "10 min ago" | grep "UFW BLOCK" | grep "DPT=6443"
+# SRC=10.42.0.x on an lxc* interface confirms pod traffic is being blocked
+```
+
+**Incident note (2026-10-15):** the cluster broke after an `apt upgrade` on the
+host; pod traffic that previously reached the API server stopped doing so.
+These rules make that path explicit instead of relying on implicit behaviour.
+Trade-off: pods can reach any host port. Tighten with NetworkPolicies later.
+
 ---
 
 ## Phase 4 — K3s Installation
